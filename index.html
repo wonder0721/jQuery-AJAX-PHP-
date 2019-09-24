@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="./images/favicon.ico">
+    <link rel="stylesheet" href="./lib/main.css">
+    <link rel="stylesheet" href="./lib/weather.css">
+    <link rel="stylesheet" href="./lib/font.css">
+    <link rel="stylesheet" href="./lib/book.css">
+    <link rel="stylesheet" href="./lib/news.css">
+    <script src="./lib/template-web.js"></script>
+    <script src="./lib/jquery-1.12.4.js"></script>
+    <title>生活馆</title>
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- 顶部导航栏 -->
+        <div class="nav">
+            <h4 class="nav-tips">WELCOME ， ENJOY YOURSELF!</h4>
+            <div class="loading">
+                <img src="./images/loading.gif" alt="">
+                <span>loading...</span>
+            </div>
+        </div>
+        <!-- 左侧导航栏 -->
+        <div class="sidebar">
+            <ul class="main-menu">
+                <!-- 主页按钮 -->
+                <li class="has-submenu">
+                    <a href="" class="menu-index">
+                        <i class="iconfont">&#xe503</i>
+                        <span>主页</span>
+                    </a>
+                </li>
+                <!-- 海贼王板块 -->
+                <li class="has-submenu">
+                    <a href="" class="menu-title">
+                        <i class="iconfont">&#xe502</i>
+                        <span>海贼王全集</span>
+                    </a>
+                    <ul class="submenu cartoon">
+                        <li><a href="" id="page1">1-75集</a></li>
+                        <li><a href="" id="page2">76-150集</a></li>
+                        <li><a href="" id="page3">151-225集</a></li>
+                        <li><a href="" id="page4">226-300集</a></li>
+                        <li><a href="" id="page5">301-375集</a></li>
+                        <li><a href="" id="page1">376-450集</a></li>
+                        <li><a href="" id="page2">451-525集</a></li>
+                        <li><a href="" id="page3">526-600集</a></li>
+                        <li><a href="" id="page4">601-675集</a></li>
+                        <li><a href="" id="page5">676-750集</a></li>
+                        <li><a href="" id="page4">751-825集</a></li>
+                        <li><a href="" id="page5">826-900集</a></li>
+                    </ul>
+                </li>
+                <!-- 天气查询板块 -->
+                <li class="has-submenu">
+                    <a href="" class="menu-title">
+                        <i class="iconfont">&#xe502</i>
+                        <span>天气查询</span>
+                    </a>
+                    <ul class="submenu weather">
+                        <li><a href="">近七天天气查询</a></li>
+                    </ul>
+                </li>
+                <!-- 书籍板块 -->
+                <li class="has-submenu">
+                    <a href="" class="menu-title">
+                        <i class="iconfont">&#xe502</i>
+                        <span>好书推荐</span>
+                    </a>
+                    <ul class="submenu book">
+                        <li><a href="" id="242">中国文学</a></li>
+                        <li><a href="" id="252">人物传记</a></li>
+                        <li><a href="" id="244">儿童文学</a></li>
+                        <li><a href="" id="248">历史</a></li>
+                        <li><a href="" id="257">哲学</a></li>
+                        <li><a href="" id="243">外国文学</a></li>
+                        <li><a href="" id="247">小说</a></li>
+                        <li><a href="" id="251">心灵鸡汤</a></li>
+                        <li><a href="" id="253">心理学</a></li>
+                        <li><a href="" id="250">成功励志</a></li>
+                        <li><a href="" id="249">教育</a></li>
+                        <li><a href="" id="245">散文</a></li>
+                        <li><a href="" id="256">理财</a></li>
+                        <li><a href="" id="254">管理</a></li>
+                        <li><a href="" id="246">经典名著</a></li>
+                        <li><a href="" id="255">经济</a></li>
+                        <li><a href="" id="258">计算机</a></li>
+                    </ul>
+                </li>
+                <!-- 新闻板块 -->
+                <li class="has-submenu">
+                        <a href="" class="menu-title">
+                            <i class="iconfont">&#xe502</i>
+                            <span>头条趣闻</span>
+                        </a>
+                        <ul class="submenu news">
+                            <li><a href="" type="top">头条</a></li>
+                            <li><a href="" type="shehui">社会</a></li>
+                            <li><a href="" type="guonei">国内</a></li>
+                            <li><a href="" type="guoji">国际</a></li>
+                            <li><a href="" type="yule">娱乐</a></li>
+                            <li><a href="" type="tiyu">体育</a></li>
+                            <li><a href="" type="junshi">军事</a></li>
+                            <li><a href="" type="keji">科技</a></li>
+                            <li><a href="" type="caijing">财经</a></li>
+                            <li><a href="" type="shishang">时尚</a></li>
+                        </ul>
+                    </li>
+                <!-- 经典游戏板块 -->
+                <li class="has-submenu">
+                    <a href="" class="menu-title">
+                        <i class="iconfont">&#xe502</i>
+                        <span>经典小游戏</span>
+                    </a>
+                    <ul class="submenu game">
+                        <li><a href="">贪吃蛇</a></li>
+                        <li><a href="">扫雷</a></li>
+                        <li><a href="">2D桌球</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <!-- 主要展示页面 -->
+        <div class="content"> 
+            <!-- ajax客户端异步渲染 -->
+            <div class="main" id="info">
+            </div>
+            <!-- 回到顶部按钮 -->
+            <div class="go-top">
+                <img src="./images/go-top.png" alt="" title="回到顶部">
+            </div>
+            <!-- 底部 -->
+            <div class='footer'>
+                <i class='iconfont'>&#xe62b</i>
+                <a href="https://github.com/wonder0721?tab=repositories" target='_blank' title="visit my github">https://github.com/wonder0721?tab=repositories</a>
+            </div>
+        </div> 
+    </div>
+
+    <!-- 新闻展示模版 -->
+    <script type="text/html" id="newsTemp">
+        <div class="news-container">
+        {{each data}}
+            <a href={{$value.url}} target="_blank" class="news-block" title={{$value.title}}>
+                <h2 class='title'>{{$value.title}}</h2>
+                <div class="img-wrapper">
+                    <ul>
+                        <li class='img-li'>
+                            <img src={{$value.thumbnail_pic_s}} alt="">
+                        </li>
+                        {{if $value.thumbnail_pic_s02}}
+                        <li class='img-li'>
+                            <img src={{$value.thumbnail_pic_s02}} alt="">
+                        </li>
+                        {{/if}}
+                        {{if $value.thumbnail_pic_s03}}
+                        <li class='img-li'>
+                            <img src={{$value.thumbnail_pic_s03}} alt="">
+                        </li>
+                        {{/if}}
+                    </ul>
+                </div>
+                <p class='from'>
+                    <span class="author">{{$value.author_name}}</span>
+                    <span class='date'>{{$value.date}}</span>
+                </p>
+            </a>
+        {{/each}}
+        </div>
+    </script>
+
+    <!-- 书籍展示模版 -->
+    <script type="text/html" id="bookTemp">
+        <div class="book-container">
+        {{ each data }}
+            <div class="book-block">
+                <div class="img-wrapper" title={{$value.title}}>
+                    <img src={{$value.img}} alt={{$value.title}}>
+                </div>
+                <div class="book-desc">
+                    <a class="book-title">{{$value.sub1}}</a>
+                    <p class="book-foot">
+                        <span class="reading">{{$value.reading}}</span>
+                        <span class="date">上架日期：{{$value.bytime}}</span>
+                    </p>
+                    <p class="catalog">分类：{{$value.catalog}}</p>
+                    <a class="more" target='_blank' href={{$value.online}}>去购买</a>
+                    <p class="book-content">
+                        {{@$value.sub2}}
+                    </p>
+                </div>            
+            </div>
+        {{ /each }}
+        </div>
+    </script>
+
+    <!-- 天气模版 -->
+    <script type=text/html id="weatherTemp">
+        <div class="weather-wrapper">
+            <div class="today">
+                <div class="left-info">
+                    <div class="date">
+                        <span>{{ymd}}</span>
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        <span>{{week}}</span>
+                    </div>
+                    <div class="temp">
+                        <img src="./images/weather/温度.png" alt="">
+                        <span>{{wendu}}℃</span>
+                    </div>
+                    <div class="target">
+                        <div>
+                            <i></i>
+                            <span>天气</span>
+                            <em>{{type}}</em>
+                        </div>
+                        <div>
+                            <i></i>
+                            <span>湿度</span>
+                            <em>{{shidu}}</em>
+                        </div>
+                        <div>
+                            <i></i>
+                            <span>{{fx}}</span>
+                            <em>2级</em>
+                        </div>
+                        <div>
+                            <i></i>
+                            <span>89</span>
+                            <em>{{quality}}</em>
+                        </div>
+                    </div> 
+                </div>
+                <div class="right-info">
+                    <div class="daytime">
+                        <p>{{date}}日白天</p>
+                        <p class="high-temp">{{high}}</p>
+                        <p>
+                            <i></i>
+                            <span>日出：{{sunrise}}</span>
+                        </p>
+                    </div>
+                    <div class="night">
+                        <p>{{date}}日夜间</p>
+                        <p class='low-temp'>{{low}}</p>
+                        <p>
+                            <i></i>
+                            <span>日落：{{sunset}}</span>
+                        </p>
+                    </div>
+                    <div class="tips">
+                        <p>
+                            <span>PM10: {{pm10}}</span>
+                            &nbsp;&nbsp;&nbsp;&nbsp;
+                            <span>PM25: {{pm25}}</span>
+                        </p>
+                        <p class="ganmao">感冒指数：{{ganmao}}</p>
+                        <p class="notice">{{notice}}</p>
+                    </div>   
+                </div>
+            </div>
+            <ul class="future">
+                {{ each forecast }}
+                <li>
+                    <h4>{{$value.week}}</h4>
+                    <p class="date">{{$value.ymd}}</p>
+                    {{ if $value.type === "多云"}}
+                    <img src="./images/weather/多云.png" alt="">
+                    {{ else if $value.type === "晴"}}
+                    <img src="./images/weather/晴天.png" alt="">
+                    {{ else if $value.type === "阴"}}
+                    <img src="./images/weather/阴天.png" alt="">
+                    {{ else if $value.type }}
+                    <img src="./images/weather/雨天.png" alt="">
+                    {{ /if }}
+                    <div class="temp">
+                        <p>{{ $value.high }}</p>
+                        <p>{{ $value.low }}</p>
+                    </div>
+                    <p class="weather">{{$value.type}}</p>
+                    <p class="wind-type">{{$value.fx}}</p>
+                    <p class='wind-power'>空气质量：{{aqi}}</p>
+                </li>
+                {{ /each }}
+            </ul>
+        </div>
+    </script>
+    <script src='./lib/main.js'></script>
+</body>
+
+</html>
